@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="og:title" content="Dog to Human Years"/>
+    <meta name="og:description" content="Convert your dogs age to human years!"/>
+    <style>
+      body {
+        background-color: #121212;
+        color: #ccc;
+      }
+      input {
+        background-color: #222;
+        color: #ccc;
+        width: 100px;
+      }
+      button {
+        background-color: #222;
+        color: #ccc;
+      }
+      button:hover {
+        transform: scale(1.1);
+      }
+    </style>
+    <script>
+      addEventListener("keydown", event => {
+        if (event.keyCode === 13) document.getElementById("btn").click();
+      });
+      function dog2human(year) {
+        let humanYears = 16 * Math.log(year) + 31;
+        return humanYears;
+      }
+      function calculate() {
+        let dogAge = document.getElementById("dog-age").value;
+        let results = document.getElementById("results");
+        let humanAge = dog2human(dogAge);
+        results.textContent = `${humanAge} years`;
+      }
+    </script>
+  </head>
+  <body>
+    <label>Dogs age</label>
+    <input type="number" id="dog-age">
+    <button id="btn" onclick="calculate();">Calculate!</button> <br/>
+    <p id="results"></p>
+    <p style="color: #f00;">Dog age to human years, new formula!<br/>
+    16 * ln(dog_age) + 31</p>
+  </body>
+</html>
