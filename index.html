@@ -26,15 +26,17 @@
       addEventListener("keydown", event => {
         if (event.keyCode === 13) document.getElementById("btn").click();
       });
+      let invalidInput = "\u{af}\\_(ツ)_/\u{af}";
       function dog2human(year) {
         let humanYears = 16 * Math.log(year) + 31;
+        if (humanYears <= 0 || humanYears == null) humanYears = 0;
         return humanYears;
       }
       function calculate() {
         let dogAge = document.getElementById("dog-age").value;
         let results = document.getElementById("results");
         let humanAge = dog2human(dogAge);
-        results.textContent = `${humanAge} years`;
+        results.textContent = `${humanAge} years`.replaceAll("NaN", invalidInput);
       }
     </script>
   </head>
